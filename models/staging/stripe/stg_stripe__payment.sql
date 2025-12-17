@@ -1,6 +1,5 @@
 
 select 
-order_id
-,customer_id, 
+orderid as order_id
 ,amount 
 from stripe.payment

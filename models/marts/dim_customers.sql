@@ -4,19 +4,26 @@ select * from {{ref('stg_jaffle_shop__customers')}}
 
 ),
 
+payments as (
+    select * from {{ ref ('stg_stripe__payment') }}
+),
+
+
 orders as (
 
 select * from {{ref('stg_jaffle_shop__orders')}}
 ),
 
-customer_orders as (
+customer_orders_payment as (
 
     select
-        customer_id,
-        min(order_date) as first_order_date,
-        max(order_date) as most_recent_order_date,
-        count(order_id) as number_of_orders
-    from orders
+        ord.customer_id,
+        min(ord.order_date) as first_order_date,
+        max(ord.order_date) as most_recent_order_date,
+        count(ord.order_id) as number_of_orders,
+        sum(pay.amount)    as lifetime_value
+    from orders ord
+    left join payments pay on pay.order_id=ord.order_id
     group by 1
 
 ),
@@ -28,13 +35,14 @@ final as (
         customers.customer_id,
         customers.first_name,
         customers.last_name,
-        customer_orders.first_order_date,
-        customer_orders.most_recent_order_date,
-        coalesce(customer_orders.number_of_orders, 0) as number_of_orders
+        cop.first_order_date,
+        cop.most_recent_order_date,
+        coalesce(cop.number_of_orders, 0) as number_of_orders,
+        coalesce(lifetime_value,0) as lifetime_value
+   from customers
 
-    from customers
-
-    left join customer_orders using (customer_id)
+    left join customer_orders_payment cop using (customer_id)
+    
 
 )
 
