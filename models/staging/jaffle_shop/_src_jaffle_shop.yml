@@ -1,0 +1,9 @@
+sources:
+  - name: jaffle_shop
+    database: RODRIGO_CALLEJO_DB
+    schema: jaffle_shop
+    tables:
+    - name: orders
+
+    - name: customers
+    
