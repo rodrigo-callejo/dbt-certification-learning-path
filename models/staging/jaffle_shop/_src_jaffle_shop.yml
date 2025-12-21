@@ -15,3 +15,10 @@ sources:
     - name: orders
     - name: customers
       freshness: null
+      columns:
+        - name: id
+          description: Primary key
+          data_tests:
+            - unique
+            - not_null
+            
