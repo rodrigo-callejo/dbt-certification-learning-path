@@ -8,4 +8,4 @@ packages:
   - name: snowflake_spend
     package: gitlabhq/snowflake_spend
     version: 1.4.0
-sha1_hash: f104dc0f7602293253d62b6413241d6bef254bf4
+sha1_hash: e897f63b22ed001f20fb40bbf2c8a6f86643956a
