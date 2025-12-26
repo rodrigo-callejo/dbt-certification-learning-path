@@ -43,3 +43,5 @@ models:
     # Applies to all files under models/marts/
     marts:
       +materialized: table
+  snowflake_spend:
+    enabled: false
