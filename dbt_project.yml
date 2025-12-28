@@ -40,6 +40,8 @@ models:
     # Applies to all files under models/staging/
     staging:
       +materialized: view
+      jaffle_shop:
+        +required_tests: {"unique.*|not_null": 2}
     # Applies to all files under models/marts/
     marts:
       +materialized: table
