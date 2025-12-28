@@ -3,6 +3,6 @@ select
 from 
     {{ ref('stg_jaffle_shop__customers') }} 
 group by 
-    customer_idd
+    customer_id
 having 
     count(*) > 1
