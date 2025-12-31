@@ -5,4 +5,4 @@ from
 group by 
     customer_id
 having 
-    count(*) > 1
+    count(*) > 1 
