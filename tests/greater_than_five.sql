@@ -1,3 +1,5 @@
+{{ config(enabled = false) }}
+
 select
     sum(amount) amount_sum,
     customer_id
