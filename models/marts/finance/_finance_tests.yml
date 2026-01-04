@@ -2,8 +2,14 @@ version: 2
 
 models:
   - name: fct_orders
-    tests:
+    data_tests:
       - greater_than_val:
           column_name: amount
           column_group: customer_id
           val: 0
+    columns: 
+      - name: amount
+        tests:
+          - dbt_utils.expression_is_true:
+               arguments:
+                   expression: '>= 0'
