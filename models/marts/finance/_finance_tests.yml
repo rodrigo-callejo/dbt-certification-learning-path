@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: fct_orders
+    tests:
+      - greater_than_val:
+          column_name: amount
+          column_group: customer_id
+          val: 0
