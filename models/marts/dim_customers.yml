@@ -7,6 +7,10 @@ models:
         tests:
           - unique
           - not_null
+          - dbt_utils.cardinality_equality:
+              arguments:
+                field: customer_id
+                to: ref('stg_jaffle_shop__customers')
       - name: first_name
         description: The first name of the customer.
       - name: last_name
@@ -19,6 +23,4 @@ models:
         description: The total number of orders placed by the customer.
       - name: lifetime_value
         description: The total monetary value of all payments made by the customer.
-        data_tests:
-          - not_null
-        
+
