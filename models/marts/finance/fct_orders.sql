@@ -9,8 +9,9 @@ select * from {{ref('stg_stripe__payment')}}
 , final as 
 (
 select  pay.order_id 
-       ,pay.amount
+       ,ord.order_date
        ,ord.customer_id
+       ,pay.amount
 from payments pay
 left join orders ord on ord.order_id=pay.order_id
 )
