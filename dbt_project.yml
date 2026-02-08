@@ -47,3 +47,7 @@ models:
       +materialized: table
   snowflake_spend:
     enabled: false
+
+tests:
+  dbt_fundamentals_on_demand:
+    +store_failures: true
