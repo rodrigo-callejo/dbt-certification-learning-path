@@ -7,6 +7,8 @@ models:
           column_name: amount
           column_group: customer_id
           val: 0
+          config:
+            severity: warn
     columns: 
       - name: amount
         tests:
